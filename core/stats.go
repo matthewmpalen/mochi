@@ -49,6 +49,14 @@ func (s Stats) MaxMP() uint64 {
 	return s.maxMP
 }
 
+func (s Stats) HP() uint64 {
+	return s.hp
+}
+
+func (s Stats) MP() uint64 {
+	return s.mp
+}
+
 func (s Stats) Strength() uint64 {
 	return s.strength
 }

@@ -16,13 +16,29 @@ func NewEntity(n string, hp uint64, mp uint64, str uint64, def uint64, a uint64)
 	}
 }
 
-func (e *Entity) Heal(x uint64) {
-	if e.stats.hp+x > e.stats.maxHP {
-		e.stats.hp = e.stats.maxHP
-	}
+func (e Entity) Name() string {
+	return e.name
+}
 
-	e.stats.hp += x
-	fmt.Printf("%s was healed", e.name)
+func (e Entity) Stats() Stats {
+	return e.stats
+}
+
+func (e *Entity) Heal(x uint64) {
+	switch {
+	case e.IsDead():
+		return
+	case e.stats.hp == e.stats.maxHP:
+		return
+	case e.stats.hp+x < e.stats.hp:
+		// Overflow
+		e.stats.hp = e.stats.maxHP
+	case e.stats.hp+x > e.stats.maxHP:
+		e.stats.hp = e.stats.maxHP
+	default:
+		e.stats.hp += x
+	}
+	fmt.Printf("%s was healed %d", e.name, x)
 }
 
 func (e *Entity) Damage(x uint64) {
@@ -30,9 +46,7 @@ func (e *Entity) Damage(x uint64) {
 	case e.stats.hp == 0:
 		return
 	case x > e.stats.hp:
-		fmt.Printf("%s took %d damage (HP=%d, IsDead=%t)\n", e.name, x, e.stats.hp, e.IsDead())
 		e.stats.hp = 0
-		return
 	default:
 		e.stats.hp -= x
 	}
