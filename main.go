@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/matthewmpalen/mochi/core"
 )
 
 func main() {
-	fmt.Println("Hello world")
+	entity := core.NewEntity("A", 100, 50, 5, 5, 5)
+	fmt.Println(entity)
 }
