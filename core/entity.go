@@ -37,7 +37,6 @@ func (e *Entity) Damage(x uint64) {
 		e.stats.hp -= x
 	}
 
-	e.stats.hp -= x
 	fmt.Printf("%s took %d damage (HP=%d, IsDead=%t)\n", e.name, x, e.stats.hp, e.IsDead())
 }
 
