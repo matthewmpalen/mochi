@@ -26,12 +26,16 @@ func (e *Entity) Heal(x uint64) {
 }
 
 func (e *Entity) Damage(x uint64) {
+	if e.stats.hp == 0 {
+		return
+	}
+
 	if x > e.stats.hp {
 		e.stats.hp = 0
 	}
 
 	e.stats.hp -= x
-	fmt.Printf("%s was lost %d HP", e.name, x)
+	fmt.Printf("%s lost %d HP (HP=%d, IsDead=%t)\n", e.name, x, e.stats.hp, e.IsDead())
 }
 
 func (e Entity) IsDead() bool {

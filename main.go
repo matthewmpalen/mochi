@@ -11,7 +11,8 @@ func main() {
 	e2 := core.NewEntity("B", 80, 70, 4, 4, 6)
 	party := core.NewParty(e1, e2)
 
-	for i, entity := range party.Members() {
-		fmt.Printf("%d -- %s\n", i, entity)
+	for !party.IsDefeated() {
+		party.Damage(10)
+		fmt.Println(party)
 	}
 }
