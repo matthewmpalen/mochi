@@ -17,27 +17,27 @@ func NewEntity(n string, hp uint64, mp uint64, str uint64, def uint64, a uint64)
 }
 
 func (e *Entity) Heal(x uint64) {
-	if e.hp+x > e.maxHP {
-		e.hp = e.maxHP
+	if e.stats.hp+x > e.stats.maxHP {
+		e.stats.hp = e.stats.maxHP
 	}
 
-	e.hp += x
+	e.stats.hp += x
 	fmt.Printf("%s was healed", e.name)
 }
 
 func (e *Entity) Damage(x uint64) {
-	if x > e.hp {
-		e.hp = 0
+	if x > e.stats.hp {
+		e.stats.hp = 0
 	}
 
-	e.hp -= x
+	e.stats.hp -= x
 	fmt.Printf("%s was lost %d HP", e.name, x)
 }
 
 func (e Entity) IsDead() bool {
-	return e.hp == 0
+	return e.stats.hp == 0
 }
 
 func (e Entity) String() string {
-	return fmt.Sprintf("Entity: name=%s, hp=%d, IsDead=%t", e.name, e.stats.HP(), e.IsDead())
+	return fmt.Sprintf("Entity: name=%s, hp=%d, IsDead=%t", e.name, e.stats.hp, e.IsDead())
 }
