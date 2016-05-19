@@ -1,5 +1,9 @@
 package core
 
+import (
+	"fmt"
+)
+
 type (
 	Party struct {
 		members []Entity
@@ -14,4 +18,18 @@ func NewParty(entities ...Entity) Party {
 
 func (p Party) Members() []Entity {
 	return p.members
+}
+
+func (p Party) IsDefeated() bool {
+	for _, entity := range p.members {
+		if !entity.IsDead() {
+			return false
+		}
+	}
+
+	return true
+}
+
+func (p Party) String() string {
+	return fmt.Sprintf("Party: IsDefeated=%t", p.IsDefeated())
 }
