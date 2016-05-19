@@ -1,43 +1,43 @@
 package core
 
-import(
+import (
 	"math/rand"
 )
 
 type (
 	Stats struct {
 		//base stats
-		maxHP    	 uint64
-		maxMP    	 uint64
+		maxHP        uint64
+		maxMP        uint64
 		baseStrength uint64
 		baseDefense  uint64
 		baseAgility  uint64
-		baseLuck	 uint64
+		baseLuck     uint64
 		//derived stats
-		hp 			uint64
-		mp			uint64
-		strength	uint64
-		defense		uint64
-		agility		uint64
-		luck		uint64
+		hp       uint64
+		mp       uint64
+		strength uint64
+		defense  uint64
+		agility  uint64
+		luck     uint64
 	}
 )
 
 func NewStats(hp uint64, mp uint64, str uint64, def uint64, agi uint64) Stats {
-	lck = rand.Intn(10)
+	lck := uint64(rand.Intn(10))
 	return Stats{
-		maxHP:    	  hp,
-		hp:		 	  hp,
-		maxMP:    	  mp,
-		mp:			  mp,
+		maxHP:        hp,
+		hp:           hp,
+		maxMP:        mp,
+		mp:           mp,
 		baseStrength: str,
 		strength:     str,
 		baseDefense:  def,
-		defense:	  def,
+		defense:      def,
 		baseAgility:  agi,
-		agility:	  agi,
-		baseLuck: 	  lck,
-		luck:		  lck
+		agility:      agi,
+		baseLuck:     lck,
+		luck:         lck,
 	}
 }
 
@@ -66,10 +66,10 @@ func (s Stats) Luck() uint64 {
 }
 
 func (s Stats) ResetStats() {
-	hp = maxHP
-	mp = maxMP
-	strength = baseStrength
-	defense = baseDefense
-	agility = baseAgility
-	luck = baseLuck
+	s.hp = s.maxHP
+	s.mp = s.maxMP
+	s.strength = s.baseStrength
+	s.defense = s.baseDefense
+	s.agility = s.baseAgility
+	s.luck = s.baseLuck
 }
