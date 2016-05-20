@@ -1,6 +1,9 @@
 language: go
-  - 1.5
 
-before_install:
-  - cp .netrc ~
-  - chmod 600 .netrc
+go:
+  - 1.5
+  - tip
+
+script:
+  - go get -v ./...
+  - go test -v -cover ./...
