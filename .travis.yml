@@ -1,6 +1,10 @@
 language: go
   - 1.5
 
+env:
+  global:
+    - GOPATH=$HOME/go
+
 script:
-  - go get -v github.com/matthewmpalen/mochi
+  - go get -v ./...
   - go test -v -cover ./...
