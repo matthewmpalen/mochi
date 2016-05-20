@@ -1,2 +1,5 @@
 language: go
   - 1.5
+
+script:
+  - go test -v -cover ./...
