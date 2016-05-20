@@ -1,9 +1,8 @@
 language: go
-  - 1.5
 
-env:
-  global:
-    - GOPATH=$HOME/go
+go:
+  - 1.5
+  - tip
 
 script:
   - go get -v ./...
