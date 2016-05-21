@@ -11,9 +11,7 @@ type (
 )
 
 func NewParty(entities ...Entity) Party {
-	return Party{
-		members: entities,
-	}
+	return Party{members: entities}
 }
 
 func (p Party) Members() []Entity {
@@ -21,9 +19,9 @@ func (p Party) Members() []Entity {
 }
 
 func (p *Party) Damage(x uint64) {
-	perCharDamage := x / uint64(len(p.members))
+	damagePerMember := x / uint64(len(p.members))
 	for i := 0; i < len(p.members); i++ {
-		p.members[i].Damage(perCharDamage)
+		p.members[i].Damage(damagePerMember)
 	}
 }
 
@@ -35,6 +33,10 @@ func (p Party) IsDefeated() bool {
 	}
 
 	return true
+}
+
+func (p Party) Size() int {
+	return len(p.members)
 }
 
 func (p Party) String() string {
