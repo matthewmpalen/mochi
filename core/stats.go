@@ -73,7 +73,19 @@ func (s Stats) Luck() uint64 {
 	return s.luck
 }
 
-func (s Stats) ResetStats() {
+func (s *Stats) BoostStrength() {
+	s.strength *= 2
+}
+
+func (s *Stats) BoostDefense() {
+	s.defense *= 2
+}
+
+func (s *Stats) BoostAgility() {
+	s.agility *= 2
+}
+
+func (s *Stats) ResetStats() {
 	s.hp = s.maxHP
 	s.mp = s.maxMP
 	s.strength = s.baseStrength
