@@ -1,6 +1,7 @@
-package core
+package core_test
 
 import (
+	. "github.com/matthewmpalen/mochi/core"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
