@@ -5,12 +5,12 @@ import "fmt"
 type (
 	Entity struct {
 		name  string
-		stats Stats
+		stats *Stats
 	}
 )
 
-func NewEntity(n string, hp uint64, mp uint64, str uint64, def uint64, a uint64) Entity {
-	return Entity{
+func NewEntity(n string, hp uint64, mp uint64, str uint64, def uint64, a uint64) *Entity {
+	return &Entity{
 		name:  n,
 		stats: NewStats(hp, mp, str, def, a),
 	}
@@ -20,7 +20,7 @@ func (e Entity) Name() string {
 	return e.name
 }
 
-func (e Entity) Stats() Stats {
+func (e Entity) Stats() *Stats {
 	return e.stats
 }
 
