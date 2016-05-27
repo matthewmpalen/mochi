@@ -37,7 +37,7 @@ var _ = Describe("Party", func() {
 
 	Describe("Members", func() {
 		It("should return the same members", func() {
-			expected := []Entity{
+			expected := []*Entity{
 				NewEntity(name1, hp, mp, str, def, agil),
 				NewEntity(name2, hp, mp, str, def, agil),
 			}

@@ -23,9 +23,9 @@ type (
 	}
 )
 
-func NewStats(hp uint64, mp uint64, str uint64, def uint64, agi uint64) Stats {
+func NewStats(hp uint64, mp uint64, str uint64, def uint64, agi uint64) *Stats {
 	lck := uint64(rand.Intn(10))
-	return Stats{
+	return &Stats{
 		maxHP:        hp,
 		hp:           hp,
 		maxMP:        mp,
